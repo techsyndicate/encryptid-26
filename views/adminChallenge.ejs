@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Challenge</title>
+    <%- include('./partials/font') %>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #111;
+            margin: 1vw;
+            font-family: pixeloid;
+        }
+        h1 {
+            color: white;
+            margin: 2vw 0px;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+            align-items: center;
+        }
+        input[type=text], textarea, select, input[type=number] {
+            background-color: #111;
+            color: white;
+            font-family: pixeloid;
+            border: 2px solid #16e16e;
+            border-radius: 1vw;
+            padding: 1vw;
+            font-size: 1.1vw;
+            width: 30vw;
+            outline: none;
+        }
+        input[type=submit] {
+            background-color: #16e16e;
+            border: none;
+            outline: none;
+            border-radius: 1vw;
+            width: 30vw;
+            padding: 1vw;
+            font-size: 1.1vw;
+            font-family: pixeloid;
+            cursor: pointer;
+        }
+        textarea {
+            height: 20vh;
+        }
+        table {
+            width: 100%;
+            font-size: 2.1vh;
+            border-spacing: 0px;
+        }
+        th, td, table {
+            border: 0.35vh solid #000;
+        }
+        th {
+            background: #16e16e;
+            color: black;
+            font-weight: normal;
+            padding: 1vh 0;
+        }
+        tr {
+            background-color: #777;
+        }
+        tr:nth-child(odd) {
+            background-color: #999;
+        }
+        td {
+            text-align: center;
+            padding: 1vh 0;
+        }
+        .section {
+            padding: 8vh 0 5vh 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .section h1 {
+            color: white;
+            font-size: 2em;
+            margin: 0px;
+            text-align: center;
+        }
+        .challengeTypes {
+            display: flex;
+            justify-content: center;
+            gap: 2vw;
+            margin-top: 4vh;
+        }
+        .challengeType {
+            background-color: #292929;
+            border: 0.5vh solid #666;
+            border-radius: 1vw;
+            width: 35vw;
+            height: 30vh;
+        }
+        .challengeType p {
+            text-align: center;
+            background-color: #16e16e;
+            margin: 0px;
+            font-size: 2.2vh;
+            height: 6vh;
+            border-top-left-radius: 0.8vw;
+            border-top-right-radius: 0.8vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .challengeType div {
+            height: 22vh;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <a href="/admin" style="color: black; background: #16e16e; padding: 1.5vh 1vw; font-size: 1.8vh; text-decoration: none; border-radius: 100vw; margin-top: 1vh; margin-bottom: 3vh;">Go to admin page</a>
+    </div>
+    <h1>Edit Challenge</h1>
+    <form action="" method="POST">
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Title:</p>
+            <input type="text" name="title" placeholder="Title:" autocomplete="off" value="<%= challenge.title %>">
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Description:</p>
+            <textarea name="description" placeholder="Description:"><%= challenge.description %></textarea>
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Challenge ID:</p>
+            <input type="text" name="challengeId" placeholder="Challenge ID:" autocomplete="off" value="<%= challenge.challengeId %>">
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Type:</p>
+            <select name="type">
+                <option disabled>Type:</option>
+                <option value="cryptic" <%= challenge.type == 'cryptic' ? 'selected' : '' %>>Cryptic</option>
+                <option value="ctf" <%= challenge.type == 'ctf' ? 'selected' : '' %>>CTF</option>
+            </select>
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Answer:</p>
+            <input type="text" name="answer" placeholder="Answer:" autocomplete="off" value="<%= challenge.answer %>">
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Points:</p>
+            <input type="number" name="points" placeholder="Points:" autocomplete="off" value="<%= challenge.points %>">
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Image Link:</p>
+            <input type="text" name="img" placeholder="Image Link:" autocomplete="off" value="<%= challenge.img %>">
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Attachment File Name:</p>
+            <input type="text" name="attachmentName" placeholder="Attachment File Name:" autocomplete="off" value="<%= challenge.attachmentName %>">
+        </div>
+        <div>
+            <p style="color: white; font-size: 2vh; margin: 1vh 0;">Attachment Link:</p>
+            <input type="text" name="attachmentLink" placeholder="Attachment Link:" autocomplete="off" value="<%= challenge.attachmentLink %>">
+        </div>
+        <input type="submit">
+    </form>
+    <div class="section">
+        <h1>Logs</h1>
+        <div class="challengeTypes">
+            <div class="challengeType" style="width: 75vw; height: 80vh;">
+                <p>Logs for challenge:</p>
+                <div style="height: 72vh;">
+                    <table>
+                        <tr style="position: sticky; top: 0">
+                            <th>User</th>
+                            <th>Attempt</th>
+                            <th>Correct?</th>
+                            <th>Time</th>
+                        </tr>
+                        <% for (let i = 0; i < logs.length; i++) { %>
+                        <tr>
+                            <td><%= logs[i].user %></td>
+                            <td><%= logs[i].attempt %></td>
+                            <td><%= logs[i].correct ? 'Yes' : 'No' %></td>
+                            <td><%= logs[i].time %></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

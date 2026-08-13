@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Admin Page</title>
+    <%- include('./partials/font.ejs') %>
+    <style>
+        body {
+            font-family: pixeloid;
+            background-color: #111;
+            margin: 0px;
+        }
+        * {box-sizing: border-box;}
+        .mainHeading {
+            color: white;
+            text-align: center; 
+            font-size: 2.5em; 
+            color: #16e16e; 
+            background-color: #1e1e1e;
+            margin: 0px;
+            padding: 3vh 0px;
+        }
+        .section {
+            padding: 8vh 0 5vh 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .section h1 {
+            color: white;
+            font-size: 2em;
+            margin: 0px;
+            text-align: center;
+        }
+        .challengeTypes {
+            display: flex;
+            justify-content: center;
+            gap: 2vw;
+            margin-top: 4vh;
+        }
+        .challengeType {
+            background-color: #292929;
+            border: 0.5vh solid #666;
+            border-radius: 1vw;
+            width: 35vw;
+            height: 30vh;
+        }
+        .challengeType p {
+            text-align: center;
+            background-color: #16e16e;
+            margin: 0px;
+            font-size: 2.2vh;
+            height: 6vh;
+            border-top-left-radius: 0.8vw;
+            border-top-right-radius: 0.8vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .challengeType div {
+            height: 22vh;
+            overflow: auto;
+        }
+        .challenge {
+            text-align: center;
+            padding: 2vh 0 0 0;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+        }
+        .challenge:hover {
+            color: #ccc;
+        }
+        .new {
+            background-color: #16e16e;
+            width: 7vh;
+            height: 7vh;
+            color: black;
+            border-radius: 100vw;
+            font-size: 5vh;
+            text-decoration: none;
+            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+        }
+        table {
+            width: 100%;
+            font-size: 2.1vh;
+            border-spacing: 0px;
+        }
+        th, td, table {
+            border: 0.35vh solid #000;
+        }
+        th {
+            background: #16e16e;
+            color: black;
+            font-weight: normal;
+            padding: 1vh 0;
+        }
+        tr {
+            background-color: #777;
+        }
+        tr:nth-child(odd) {
+            background-color: #999;
+        }
+        td {
+            text-align: center;
+            padding: 1vh 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="mainHeading">Admin Portal</h1>
+    <div class="section">
+        <h1 style="display: flex; gap: 1vw; align-items: center; justify-content: center;">Challenges <a href="/admin/new" class="new">+</a></h1>
+        <div class="challengeTypes">
+            <div class="challengeType">
+                <p>Cryptic</p>
+                <div>
+                    <% for (let j = 0; j < crypticLevels.length; j++) { %>
+                        <a class="challenge" href="/admin/challenge/<%= crypticLevels[j].challengeId %>"><%= crypticLevels[j].title %></a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="challengeType">
+                <p>CTF</p>
+                <div>
+                    <% for (let k = 0; k < ctfLevels.length; k++) { %>
+                        <a class="challenge" href="/admin/challenge/<%= ctfLevels[k].challengeId %>"><%= ctfLevels[k].title %></a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h1>Users</h1>
+        <div class="challengeTypes">
+            <div class="challengeType" style="width: 40vw; height: 50vh">
+                <p>All Users on Encryptid:</p>
+                <div style="height: 43vh;">
+                    <% for (let i = 0; i < users.length; i++) { %>
+                        <a class="challenge" href="/admin/user/<%= users[i].id %>"><%= users[i].name %></a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <h1>Logs</h1>
+        <div class="challengeTypes">
+            <div class="challengeType" style="width: 75vw; height: 80vh;">
+                <p>Logs for all challenges:</p>
+                <div style="height: 72vh; position: relative;">
+                    <table>
+                        <tr style="position: sticky; top: 0">
+                            <th>Challenge</th>
+                            <th>User</th>
+                            <th>Attempt</th>
+                            <th>Correct?</th>
+                            <th>Time</th>
+                        </tr>
+                        <% for (let i = 0; i < logs.length; i++) { %>
+                        <tr>
+                            <td><%= logs[i].challenge %></td>
+                            <td><%= logs[i].user %></td>
+                            <td><%= logs[i].attempt %></td>
+                            <td><%= logs[i].correct ? 'Yes' : 'No' %></td>
+                            <td><%= logs[i].time %></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

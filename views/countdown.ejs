@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Countdown</title>
+    <%- include('./partials/font.ejs') %>
+    <style>
+        * {box-sizing: border-box;}
+        body {
+            margin: 0px;
+            background-color: #111;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: pixeloid;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container img {
+            width: 45vw;
+            margin-bottom: 2vh;
+        }
+        .text {
+            color: #888;
+            font-size: 1.4em;
+            text-align: center;
+            margin: 0px;
+        }
+        .timer {
+            display: flex;
+            gap: 3vw;
+            margin-top: 4vh;
+            margin-bottom: 4vh;
+        }
+        .timeValue {
+            color: #999;
+            font-size: 2.5em;
+            margin: 0px;
+        }
+        .timeType {
+            color: #00917c;
+            font-size: 1.1em;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/banner.png">
+        <p class="text">Hunt starts in</p>
+        <div class="timer">
+            <div class="timeItem">
+                <p class="timeValue" id="days">00</p>
+                <p class="timeType">days</p>
+            </div>
+            <div class="timeItem">
+                <p class="timeValue" id="hours">00</p>
+                <p class="timeType">hours</p>
+            </div>
+            <div class="timeItem">
+                <p class="timeValue" id="minutes">00</p>
+                <p class="timeType">mins</p>
+            </div>
+            <div class="timeItem">
+                <p class="timeValue" id="seconds">00</p>
+                <p class="timeType">secs</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const myDate = new Date(1730558940000)
+        function setMyDate() {
+            const newDate = new Date(),
+                fixedDate = myDate - newDate
+                if (fixedDate < 0) return
+                var totalSeconds = Math.floor(fixedDate / 1000)
+                const myDays = Math.floor(totalSeconds / (60 * 60 * 24))
+                totalSeconds = totalSeconds - (60 * 60 * 24 * myDays)
+                const myHours = Math.floor(totalSeconds / (60 * 60))
+                totalSeconds = totalSeconds - (60 * 60 * myHours)
+                const myMins = Math.floor(totalSeconds / 60)
+                totalSeconds = totalSeconds - (60 * myMins)
+                document.getElementById('days').innerText = myDays.toString().padStart(2, '0')
+                document.getElementById('hours').innerText = myHours.toString().padStart(2, '0')
+                document.getElementById('minutes').innerText = myMins.toString().padStart(2, '0')
+                document.getElementById('seconds').innerText = totalSeconds.toString().padStart(2, '0')
+        }
+        window.onload = () => {
+            setMyDate()
+            setInterval(setMyDate, 1000)
+        }
+    </script>
+</body>
+</html>

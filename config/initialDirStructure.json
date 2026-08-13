@@ -1,0 +1,105 @@
+[
+    {
+        "name": "bin",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "boot",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "dev",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "etc",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "home",
+        "type": "directory",
+        "permissions": "all",
+        "children": [
+            {
+                "name": "ctf",
+                "type": "directory",
+                "permissions": "all",
+                "children": []
+            }
+        ]
+    },
+    {
+        "name": "lib",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "lost+found",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "media",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "opt",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "proc",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "root",
+        "type": "directory",
+        "permissions": "root",
+        "children": []
+    },
+    {
+        "name": "run",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "sys",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "tmp",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "usr",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    },
+    {
+        "name": "var",
+        "type": "directory",
+        "permissions": "none",
+        "children": []
+    }
+]

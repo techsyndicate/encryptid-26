@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <%- include('./partials/font.ejs') %>
+    <style>
+        body {
+            font-family: pixeloid;
+            background-color: #111;
+        }
+        .kaalaContainer {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .challenge {
+            display: flex;
+            flex-direction: column;
+            width: 60vw;
+            height: 70vh;
+            background-color: #272727;
+            line-height: 1.6;
+            justify-content: space-between;
+        }
+        .challengeTitle {
+            display: flex;
+            justify-content: space-between;
+            background-color: #009a7c;
+            align-items: center;
+            padding: 1vh 0;
+        }
+        .challengeTitle p {
+            font-size: 2.5vh;
+            margin: 0px;
+            margin-left: 1.25vw;
+        }
+        .challengeTitle img {
+            height: 8vh;
+        }
+        .challengeBody {
+            padding: 3vh 2.5vw;
+            color: white;
+            font-weight: lighter;
+            font-size: 1.9vh;
+        }
+        .leaderboardItem {
+            padding: 1.5vh 1.35vw;
+            background-color: #222;
+            border: 0.5vh solid #4d4d4d;
+            color: #888;
+            font-size: 1.8vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5vh;
+        }
+        .leaderboardItem p {
+            margin: 0px;
+        }
+        .leaderboardLeft {
+            display: flex;
+            gap: 1.5vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="kaalaContainer" id="challengeContainer_leaderboard">
+        <div class="challenge" id="challenge_leaderboard">
+            <div>
+                <div class="challengeTitle">
+                    <p>Leaderboard</p>
+                </div>
+                <div class="challengeBody" style="height: 57vh; overflow: auto; padding: 3vh 2.5vw;">
+                    <% for (let i = 0; i < allUsers.length; i++) { %>
+                        <% if (!allUsers[i].admin && !allUsers[i].points == 0) { %>
+                        <div class="leaderboardItem">
+                            <div class="leaderboardLeft">
+                                <p><%= i + 1 %></p>
+                                <p><%= allUsers[i].name %></p>
+                            </div>
+                            <div><%= allUsers[i].points %> gB</div>
+                        </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

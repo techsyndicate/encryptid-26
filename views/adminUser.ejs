@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>User</title>
+    <%- include('./partials/font') %>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #111;
+            margin: 1vw;
+            font-family: pixeloid;
+        }
+        h1 {
+            color: white;
+            margin: 2vw 0px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            font-size: 2.1vh;
+            border-spacing: 0px;
+        }
+        th, td, table {
+            border: 0.35vh solid #000;
+        }
+        th {
+            background: #16e16e;
+            color: black;
+            font-weight: normal;
+            padding: 1vh 0;
+        }
+        tr {
+            background-color: #777;
+        }
+        tr:nth-child(odd) {
+            background-color: #999;
+        }
+        td {
+            text-align: center;
+            padding: 1vh 0;
+        }
+        .section {
+            padding: 8vh 0 5vh 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .section h1 {
+            color: white;
+            font-size: 2em;
+            margin: 0px;
+            text-align: center;
+        }
+        .challengeTypes {
+            display: flex;
+            justify-content: center;
+            gap: 2vw;
+            margin-top: 4vh;
+        }
+        .challengeType {
+            background-color: #292929;
+            border: 0.5vh solid #666;
+            border-radius: 1vw;
+            width: 35vw;
+            height: 30vh;
+        }
+        .challengeType p {
+            text-align: center;
+            background-color: #16e16e;
+            margin: 0px;
+            font-size: 2.2vh;
+            height: 6vh;
+            border-top-left-radius: 0.8vw;
+            border-top-right-radius: 0.8vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .challengeType div {
+            height: 22vh;
+            overflow: auto;
+        }
+        p {
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <a href="/admin" style="color: black; background: #16e16e; padding: 1.5vh 1vw; font-size: 1.8vh; text-decoration: none; border-radius: 100vw; margin-top: 1vh; margin-bottom: 3vh;">Go to admin page</a>
+    </div>
+    <h1>User Details</h1>
+    <p><span style="color: #16e16e;">Display Name:</span> <%= user.name %></p>
+    <p><span style="color: #16e16e;">Email:</span> <%= user.email %></p>
+    <p><span style="color: #16e16e;">Discord Username:</span> <%= user.teamName %></p>
+    <p><span style="color: #16e16e;">Points:</span> <%= user.points %></p>
+    <p><span style="color: #16e16e;">Solves:</span> <%= user.solves.length %></p>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <% if (user.banned) { %>
+            <a href="/admin/unban/<%= user.id %>" style="color: white; background: red; padding: 1.5vh 1vw; font-size: 2.2vh; text-decoration: none; border-radius: 100vw; margin-top: 1vh; margin-bottom: 3vh;">UNBAN USER</a>
+        <% } else { %>
+            <a href="/admin/ban/<%= user.id %>" style="color: white; background: red; padding: 1.5vh 1vw; font-size: 2.2vh; text-decoration: none; border-radius: 100vw; margin-top: 1vh; margin-bottom: 3vh;">BAN USER</a>
+        <% } %>
+        </div>
+    <div class="section">
+        <h1>Logs</h1>
+        <div class="challengeTypes">
+            <div class="challengeType" style="width: 75vw; height: 80vh;">
+                <p>Logs for user:</p>
+                <div style="height: 72vh;">
+                    <table>
+                        <tr>
+                            <th>Challenge</th>
+                            <th>Attempt</th>
+                            <th>Correct?</th>
+                            <th>Time</th>
+                        </tr>
+                        <% for (let i = 0; i < logs.length; i++) { %>
+                            <tr>
+                                <td><%= logs[i].challenge %></td>
+                                <td><%= logs[i].attempt %></td>
+                                <td><%= logs[i].correct ? 'Yes' : 'No' %></td>
+                                <td><%= logs[i].time %></td>
+                            </tr>
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

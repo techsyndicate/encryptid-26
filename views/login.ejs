@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>Login to Encryptid'24</title>
+    <%- include('./partials/font.ejs') %>
+</head>
+<body>
+    <div class="kaalaContainer">
+        <div class="challenge">
+            <div>
+                <div class="challengeTitle">
+                    <p>Login</p>
+                </div>
+                <div style="padding: 3vh 3vw;">
+                    <form action="/login" method="POST">
+                        <div class="email">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="encryptid@techsyndicate.us" autocomplete="off">
+                        </div>
+                        <div class="">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="********" autocomplete="off">
+                        </div>
+                        <div style="width: 98%; display: flex; justify-content: right; margin-top: -3.75vh; margin-bottom: 4vh;">
+                            <a href="/register" style="color: #888; text-decoration: none;">Register Here</a>
+                        </div>
+                        <button type="submit">Submit</button>
+                        <% if (messages.error) { %>
+                            <p class="error"><%= messages.error %></p>
+                        <% } %>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    * {box-sizing: border-box;}
+    body {
+        font-family: pixeloid;
+    }
+    .error {
+        color: red;
+        text-align: center;
+        font-size: 1.8vh;
+        margin-bottom: 0px;
+    }
+    .kaalaContainer {
+            width: 100vw;
+            height: 100vh;
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .challenge {
+            display: flex;
+            flex-direction: column;
+            width: 50vw;
+            background-color: #272727;
+            margin-top: -8vh;
+            line-height: 1.6;
+            justify-content: space-between;
+        }
+        .challengeTitle {
+            display: flex;
+            justify-content: space-between;
+            background-color: #009a7c;
+            align-items: center;
+            padding: 1vh 1vw;
+        }
+        .challengeTitle p {
+            font-size: 2vh;
+            margin: 0px;
+        }
+        .challengeTitle img {
+            height: 8vh;
+        }
+        .challengeBody {
+            padding: 3vh 2.5vw;
+            color: white;
+            font-weight: lighter;
+            font-size: 1.9vh;
+        }
+        input{
+        flex: 1;
+        background-color: #222;
+        color: #888;
+        font-size: 2vh;
+        text-align: center;
+        font-family: pixeloid;
+        border: 0.5vh solid #4d4d4d;
+        outline: none;
+        width: 98%;
+        text-align: left;
+        margin-bottom: 5vh;
+        padding: 0.8vw;
+    }
+    button{
+        background-color: #272727;
+        color: #009a7c;
+        font-size: 1.8vh;
+        font-family: pixeloid;
+        border: 0.5vh solid #009a7c;
+        outline: none;
+        width: 40%;
+        align-self: center;
+        padding: 0.75vw;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    label{
+        color: #7d7d7d;
+        font-size: 2.5vh;
+        display: block;
+        margin-bottom: 0.75vh;
+    }
+</style>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <title>New Challenge</title>
+    <%- include('./partials/font') %>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #111;
+            margin: 1vw;
+            font-family: pixeloid;
+        }
+        h1 {
+            color: white;
+            margin: 2vw 0px;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1vw;
+            align-items: center;
+        }
+        input[type=text], textarea, select, input[type=number] {
+            background-color: #111;
+            color: white;
+            font-family: pixeloid;
+            border: 2px solid #16e16e;
+            border-radius: 1vw;
+            padding: 1vw;
+            font-size: 1.1vw;
+            width: 30vw;
+            outline: none;
+        }
+        input[type=submit] {
+            background-color: #16e16e;
+            border: none;
+            outline: none;
+            border-radius: 1vw;
+            width: 30vw;
+            padding: 1vw;
+            font-size: 1.1vw;
+            font-family: pixeloid;
+            cursor: pointer;
+        }
+        textarea {
+            height: 20vh;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Challenge</h1>
+    <form action="" method="POST">
+        <input type="text" name="title" placeholder="Title:" autocomplete="off">
+        <textarea name="description" placeholder="Description:"></textarea>
+        <input type="text" name="challengeId" placeholder="Challenge ID:" autocomplete="off">
+        <select name="type">
+            <option disabled selected>Type:</option>
+            <option value="cryptic">Cryptic</option>
+            <option value="ctf">CTF</option>
+        </select>
+        <input type="text" name="answer" placeholder="Answer:" autocomplete="off">
+        <input type="number" name="points" placeholder="Points:" autocomplete="off">
+        <input type="text" name="img" placeholder="Image Link:" autocomplete="off">
+        <input type="text" name="attachmentName" placeholder="Attachment File Name:" autocomplete="off">
+        <input type="text" name="attachmentLink" placeholder="Attachment Link:" autocomplete="off">
+        <input type="submit">
+        <p style="color: red; font-size: 1.1vw;"><%= error ? error : "" %></p>
+    </form>
+</body>
+</html>
