@@ -66,29 +66,7 @@ app.get('/leaderboard', async (req, res) => {
 app.get('/countdown', ensureAuthenticated, (req, res) => {
     res.render('countdown')
 })
-app.get('/gunfightatcomanchecreek', (req, res) => {
-    res.send(`
-    <body style="background-color: #111">
-        <img src="/image1.png" style="width: 50vw;">
-    </body>
-`)
-})
 
-app.get('/tomahawk', (req, res) => {
-    res.send(`
-<body style="background-color: #111;">
-    <p style="color: white; font-family: sans-serif">trust me, beloved hunter, follow the river to find love and other drugs.. yes, it seems unbelievable, but why would i lie? i want to find him where people revolutionize!</p>
-</body>
-`)
-})
-app.get('/offwego', (req, res) => { 
-    res.send(`
-    <body style="background-color: #111;">
-        <p style="color: white; font-family: sans-serif">bit.ly but made by tim cook</p>
-        <p style="display: none;">XlJPG</p>
-    </body>
-    `)
-})
 app.post('/check/cmd', async (req, res) => {
     if (!req.user) return res.end('no user found')
     const {cmd} = req.body
