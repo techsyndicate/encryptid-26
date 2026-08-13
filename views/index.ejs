@@ -8,12 +8,7 @@
     <title>Encryptid'24</title>
     <style>
         ::-webkit-scrollbar {
-            width: 0.5vw;
-            background-color: #292929;
-        }
-        ::-webkit-scrollbar-thumb {
-            background-color: #444;
-            border-radius: 100vw;
+            display: none;
         }
         * {box-sizing: border-box;}
         @font-face {
@@ -209,6 +204,7 @@
             transform: scale(0, 0);
             transform-origin: center center;
             transition: 0.4s;
+            overflow: auto;
         }
         .challengeTitle {
             display: flex;
@@ -470,7 +466,7 @@
         <div class="challenge" id="challenge_<%= challenges[i].challengeId %>">
             <div>
                 <div class="challengeTitle">
-                    <p><%= challenges[i].title %> (<%= challenges[i].solves %> solves)</p>
+                    <p><%= challenges[i].title %> <span style="color: navy">(<%= challenges[i].solves %> solves)</span></p>
                     <img src="/cross.png" style="cursor: pointer" onclick="closeLevel('<%= challenges[i].challengeId %>')">
                 </div>
                 <div class="challengeBody">
@@ -524,19 +520,7 @@
         }
 
         function showLockedPopup(chall) {
-            switch (chall) {
-                case 'level4cryptic':
-                    notyf.error('Solve levels 1 and 2 to unlock this level!')
-                    break
-                case 'level5cryptic':
-                    notyf.error('Solve levels 3 and 4 to unlock this level!')
-                    break
-                case 'level6cryptic':
-                    notyf.error('Solve levels 4 and 5 to unlock this level!')
-                    break
-                default:
-                    notyf.error('Solve level 0 to unlock this level!')
-            }
+            notyf.error("Solve the previous challenge to unlock this level!")
         }
 
         // function editDisplayName() {
