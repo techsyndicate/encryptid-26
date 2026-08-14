@@ -56,13 +56,13 @@ app.get("/", async (req, res) => {
     if (myUser.banned) return res.redirect("/banned");
     if (!myUser.admin) {
       const currentDate = Date.now();
-      if (currentDate < 1786732200000) return res.redirect("/countdown");
+      if (currentDate < 1786734000000) return res.redirect("/countdown");
     }
     const allUsers = await User.find().sort({
       points: "desc",
       lastAnswered: "asc",
     });
-    const foundChallenges = await Challenge.find().sort({ title: 1 });
+    const foundChallenges = await Challenge.find().sort({ challengeId: 1 });
     const cryptChallenges = await Challenge.find({ type: "cryptic" }).sort({
       title: 1,
     });
