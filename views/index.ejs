@@ -672,6 +672,11 @@
             document.getElementById('browser').style.transform = 'scale(0, 0)'
             document.getElementById('terminal').style.transform = 'scale(0, 0)'
             document.getElementById(myapp).style.transform = 'scale(1, 1)'
+            if (myapp == 'terminal') {
+                const stuff = document.getElementsByClassName('commandWrapper')
+                stuff[stuff.length - 1].getElementsByTagName("input")[0].focus()
+                console.log(stuff)
+            }
         }
         
         function goHome() {
