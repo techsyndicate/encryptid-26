@@ -77,11 +77,11 @@
         </div>
     </div>
     <script>
-        const myDate = new Date(1730558940000)
+        const myDate = new Date(1786732200000)
         function setMyDate() {
             const newDate = new Date(),
                 fixedDate = myDate - newDate
-                if (fixedDate < 0) return
+                if (fixedDate < 0) return location.href = "/"
                 var totalSeconds = Math.floor(fixedDate / 1000)
                 const myDays = Math.floor(totalSeconds / (60 * 60 * 24))
                 totalSeconds = totalSeconds - (60 * 60 * 24 * myDays)
@@ -93,6 +93,9 @@
                 document.getElementById('hours').innerText = myHours.toString().padStart(2, '0')
                 document.getElementById('minutes').innerText = myMins.toString().padStart(2, '0')
                 document.getElementById('seconds').innerText = totalSeconds.toString().padStart(2, '0')
+                // if (myDays == 0 && myHours == 0 && myMins == 0 && totalSeconds == 0) {
+                //     return location.href = "/"
+                // }
         }
         window.onload = () => {
             setMyDate()
