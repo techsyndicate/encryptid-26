@@ -150,6 +150,21 @@ app.use("/check", ensureAuthenticated, forwardBanned, checkRouter);
 //   res.redirect("https://docs.google.com/document/d/1My90xlY84EarocIPKw02JpBQCXczTr0Lze0lRRh5DJo/edit?tab=t.0")
 // })
 
+app.get("/timessquare", (req, res) => {
+  return res.end(`1) By day I am non-existent, but by night I hold full sway,
+I weave vivid worlds from shadows when the light has faded away.
+I can craft you soaring castles or lead you down dark halls,
+Painting landscapes in your mind before the morning calls.
+I am the architect of your sleeping mind - Who Am I?
+
+2) (64,2,1) (193,8,10) (209, 8, 20) ( 269,6,1) (141,4,13) 
+   (56, 5, 19) (56, 7, 4) (205, 3, 1) (237, 5 ,28) (138, 6, 14)`)
+})
+
+app.get("/christopherjudge", (req, res) => {
+  return res.redirect("https://drive.google.com/file/d/11uOwTe5aWbyEuRj5eu_YbmrkMh4QFeTn/view?usp=sharing")
+})
+
 app.listen(PORT, console.log(`RoboVM listening on port ${PORT}`));
 
 // const User = require('./schemas/userSchema')
