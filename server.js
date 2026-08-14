@@ -142,6 +142,14 @@ app.use(
 app.use("/admin", ensureAuthenticated, ensureAdmin, forwardBanned, adminRouter);
 app.use("/check", ensureAuthenticated, forwardBanned, checkRouter);
 
+
+
+
+
+// app.get("/christopherjudge", (req, res) => {
+//   res.redirect("https://docs.google.com/document/d/1My90xlY84EarocIPKw02JpBQCXczTr0Lze0lRRh5DJo/edit?tab=t.0")
+// })
+
 app.listen(PORT, console.log(`RoboVM listening on port ${PORT}`));
 
 // const User = require('./schemas/userSchema')

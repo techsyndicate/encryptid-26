@@ -79,16 +79,18 @@
                 <div class="challengeTitle">
                     <p>Leaderboard</p>
                 </div>
-                <div class="challengeBody" style="height: 57vh; overflow: auto; padding: 3vh 2.5vw;">
+                <div class="challengeBody" style="height: 56vh; overflow: auto; padding: 3vh 2.5vw;">
+                    <% let pos = 1; %>
                     <% for (let i = 0; i < allUsers.length; i++) { %>
-                        <% if (!allUsers[i].admin && !allUsers[i].points == 0) { %>
+                        <% if (!allUsers[i].admin && !allUsers[i].banned) { %>
                         <div class="leaderboardItem">
                             <div class="leaderboardLeft">
-                                <p><%= i + 1 %></p>
+                                <p><%= pos %></p>
                                 <p><%= allUsers[i].name %></p>
                             </div>
                             <div><%= allUsers[i].points %> gB</div>
                         </div>
+                        <% pos++ %>
                         <% } %>
                     <% } %>
                 </div>
