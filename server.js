@@ -178,6 +178,10 @@ app.get("/christopherjudge", (req, res) => {
   return res.redirect("https://drive.google.com/file/d/11uOwTe5aWbyEuRj5eu_YbmrkMh4QFeTn/view?usp=sharing")
 })
 
+app.get("/godlike", (req, res) => {
+  return res.redirect("https://www.dropbox.com/scl/fi/ziuiekgb1b0l6lua868jc/whats-this.png?rlkey=53xicvrstdk8hncfhbwv9o28m&st=grvb7x6o&dl=0")
+})
+
 app.listen(PORT, console.log(`RoboVM listening on port ${PORT}`));
 
 // const User = require('./schemas/userSchema')
