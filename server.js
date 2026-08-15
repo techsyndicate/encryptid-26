@@ -180,10 +180,16 @@ app.get("/godlike", (req, res) => {
   // return res.redirect("https://www.dropbox.com/scl/fi/ziuiekgb1b0l6lua868jc/whats-this.png?rlkey=53xicvrstdk8hncfhbwv9o28m&st=grvb7x6o&dl=0")
   res.render("godlike");
 });
- 
+
 app.get("/025114592", (req, res) => {
   // return res.redirect("https://www.dropbox.com/scl/fi/ziuiekgb1b0l6lua868jc/whats-this.png?rlkey=53xicvrstdk8hncfhbwv9o28m&st=grvb7x6o&dl=0")
-  res.render("https://www.dropbox.com/scl/fi/ffmfqvm38e88wsigequ3z/puzzlepiece4.png?rlkey=u0s53r1l0l23fqhfwrwm4pzcm&st=geusjrey&dl=0");
+  res.render(
+    "https://www.dropbox.com/scl/fi/ffmfqvm38e88wsigequ3z/puzzlepiece4.png?rlkey=u0s53r1l0l23fqhfwrwm4pzcm&st=geusjrey&dl=0",
+  );
+});
+app.get("/michaeladamthwaite", (req, res) => {
+  // return res.redirect("https://www.dropbox.com/scl/fi/ziuiekgb1b0l6lua868jc/whats-this.png?rlkey=53xicvrstdk8hncfhbwv9o28m&st=grvb7x6o&dl=0")
+  res.render("michaeladamthwaite");
 });
 
 app.listen(PORT, console.log(`RoboVM listening on port ${PORT}`));
