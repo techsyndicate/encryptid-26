@@ -58,7 +58,7 @@ app.get("/", async (req, res) => {
       const currentDate = Date.now();
       if (currentDate < 1786734000000) return res.redirect("/countdown");
     }
-    const allUsers = await User.find().sort({
+    const allUsers = await User.find().select("-logs").sort({
       points: "desc",
       lastAnswered: "asc",
     });
