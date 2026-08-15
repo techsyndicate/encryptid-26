@@ -11,9 +11,11 @@ const checkCmd = async (cmd, req) => {
         const echoCommand = command.join(' ').slice(5)
         return echoCommand
     } else if (command[0] == 'ksi') {
-        return "https://docs.google.com/document/d/10fmVAQpOZw_OeUNW1bn5H4xk7r7onBa_YgTp5xuBwdc/edit?tab=t.0";
+        return "https://drive.google.com/drive/folders/1YFB_dJW91GmdXxGPuAfAyt4H2uaElVKz";
     } else if (command[0] == 'duck') {
         return "https://encryptid-level0.onrender.com"
+    } else if (command[0] == "bradpitt" {
+        return "https://pastebin.com/v8USGE5z";
     }
     else {
         return `Bash: command "${command[0]}" not found.`
