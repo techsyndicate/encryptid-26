@@ -14,7 +14,7 @@ const checkCmd = async (cmd, req) => {
         return "https://drive.google.com/drive/folders/1YFB_dJW91GmdXxGPuAfAyt4H2uaElVKz";
     } else if (command[0] == 'duck') {
         return "https://encryptid-level0.onrender.com"
-    } else if (command[0] == "bradpitt" {
+    } else if (command[0] == "bradpitt") {
         return "https://pastebin.com/v8USGE5z";
     }
     else {
