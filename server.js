@@ -44,7 +44,7 @@ app.use(
       secure: "auto",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
-  })
+  }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -137,14 +137,10 @@ app.use(
   "/enableAndConfigureProxy",
   ensureAuthenticated,
   forwardBanned,
-  proxyRouter
+  proxyRouter,
 );
 app.use("/admin", ensureAuthenticated, ensureAdmin, forwardBanned, adminRouter);
 app.use("/check", ensureAuthenticated, forwardBanned, checkRouter);
-
-
-
-
 
 // app.get("/christopherjudge", (req, res) => {
 //   res.redirect("https://docs.google.com/document/d/1My90xlY84EarocIPKw02JpBQCXczTr0Lze0lRRh5DJo/edit?tab=t.0")
@@ -158,29 +154,32 @@ Painting landscapes in your mind before the morning calls.
 I am the architect of your sleeping mind - Who Am I?
 
 2) (64,2,1) (193,8,10) (209, 8, 20) ( 269,6,1) (141,4,13) 
-   (56, 5, 19) (56, 7, 4) (205, 3, 1) (237, 5 ,28) (138, 6, 14)`)
-})
+   (56, 5, 19) (56, 7, 4) (205, 3, 1) (237, 5 ,28) (138, 6, 14)`);
+});
 
 app.get("/apollo11", (req, res) => {
-  return res.end(`👩🐤👬👐👤👜👡👍👥🐩👚🐗🐗👏🐱🐬🐧🐩🐗💹💮🐗👐🐱🐬🐧🐪`)
-})
+  return res.end(`👩🐤👬👐👤👜👡👍👥🐩👚🐗🐗👏🐱🐬🐧🐩🐗💹💮🐗👐🐱🐬🐧🐪`);
+});
 
 app.get("/nooneelse", (req, res) => {
-  return res.end(`3VH9dtxW`)
-})
+  return res.end(`3VH9dtxW`);
+});
 
 app.get("/mclaren", (req, res) => {
   return res.end(`https://www.dropbox.com/scl/fi/bxh39g9uiv7mq60785nmg/spectrotraceaudio.wav?rlkey=ol4a05nn3t4wymg1oqowp8oed&st=373m61t9&dl=0
-  მტრების დასაბნევად, პირველ რიგში, საკუთარი თავი უნდა დააბნიო.`)
-})
+  მტრების დასაბნევად, პირველ რიგში, საკუთარი თავი უნდა დააბნიო.`);
+});
 
 app.get("/christopherjudge", (req, res) => {
-  return res.redirect("https://drive.google.com/file/d/11uOwTe5aWbyEuRj5eu_YbmrkMh4QFeTn/view?usp=sharing")
-})
+  return res.redirect(
+    "https://drive.google.com/file/d/11uOwTe5aWbyEuRj5eu_YbmrkMh4QFeTn/view?usp=sharing",
+  );
+});
 
 app.get("/godlike", (req, res) => {
-  return res.redirect("https://www.dropbox.com/scl/fi/ziuiekgb1b0l6lua868jc/whats-this.png?rlkey=53xicvrstdk8hncfhbwv9o28m&st=grvb7x6o&dl=0")
-})
+  // return res.redirect("https://www.dropbox.com/scl/fi/ziuiekgb1b0l6lua868jc/whats-this.png?rlkey=53xicvrstdk8hncfhbwv9o28m&st=grvb7x6o&dl=0")
+  res.render("godlike");
+});
 
 app.listen(PORT, console.log(`RoboVM listening on port ${PORT}`));
 
