@@ -1,6 +1,7 @@
 const router = require('express').Router(),
     User = require('../schemas/userSchema'),
-    Challenge = require('../schemas/challengeSchema')
+    Challenge = require('../schemas/challengeSchema'),
+    {computePoints} = require('../utils/scoring')
 
 router.get('/', async (req, res) => {
     try {
@@ -51,6 +52,12 @@ router.get('/user/:id', async (req, res) => {
             return res.redirect('/admin')
         }
         const allUsers = await User.find()
+        const foundChallenges = await Challenge.find()
+        const challengeMap = new Map(foundChallenges.flatMap(challenge => [
+            [challenge.challengeId, challenge],
+            [challenge.title, challenge]
+        ]))
+        foundUser.points = computePoints(foundUser, challengeMap)
         const allLogs = []
         for (let i = 0; i < allUsers.length; i++) {
             for (let j = 0; j < allUsers[i].logs.length; j++) {

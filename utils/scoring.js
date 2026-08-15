@@ -1,7 +1,7 @@
 function challengePoints(challenge) {
     const initial = Number(challenge.points) || 0
     if (challenge.type !== "ctf") return initial
-    let solveCount = Math.max(0, Number(challenge.solves))
+    let solveCount = Math.max(0, Number(challenge.solves) || 0)
     if (solveCount !== 0) solveCount -= 1
     // decay + 1 solves are needed for the value to decay from the initial maximum to the minimum
     const value = ((50 - initial) / (15 ** 2)) * (solveCount ** 2) + initial

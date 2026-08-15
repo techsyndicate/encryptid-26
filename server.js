@@ -59,10 +59,7 @@ app.get("/", async (req, res) => {
       const currentDate = Date.now();
       if (currentDate < 1786734000000) return res.redirect("/countdown");
     }
-    const allUsers = await User.find().select("-logs").sort({
-      points: "desc",
-      lastAnswered: "asc",
-    });
+    const allUsers = await User.find().select("-logs");
     const foundChallenges = await Challenge.find().sort({ challengeId: 1 });
     const challengeMap = new Map(
       foundChallenges.flatMap((challenge) => [
@@ -74,6 +71,9 @@ app.get("/", async (req, res) => {
     for (const user of allUsers) {
       user.points = computePoints(user, challengeMap);
     }
+    allUsers.sort(
+      (a, b) => b.points - a.points || a.lastAnswered - b.lastAnswered
+    );
     const cryptChallenges = await Challenge.find({ type: "cryptic" }).sort({
       title: 1,
     });
@@ -88,10 +88,7 @@ app.get("/", async (req, res) => {
   }
 });
 app.get("/leaderboard", async (req, res) => {
-  const allUsers = await User.find().sort({
-    points: "desc",
-    lastAnswered: "asc",
-  });
+  const allUsers = await User.find();
   const foundChallenges = await Challenge.find();
   const challengeMap = new Map(
     foundChallenges.flatMap((challenge) => [
@@ -102,6 +99,9 @@ app.get("/leaderboard", async (req, res) => {
   for (const user of allUsers) {
     user.points = computePoints(user, challengeMap);
   }
+  allUsers.sort(
+    (a, b) => b.points - a.points || a.lastAnswered - b.lastAnswered
+  );
   res.render("leaderboard", { allUsers: allUsers });
 });
 app.get("/countdown", ensureAuthenticated, (req, res) => {
