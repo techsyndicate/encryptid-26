@@ -169,6 +169,11 @@ app.get("/nooneelse", (req, res) => {
   return res.end(`3VH9dtxW`)
 })
 
+app.get("/mclaren", (req, res) => {
+  return res.end(`https://www.dropbox.com/scl/fi/bxh39g9uiv7mq60785nmg/spectrotraceaudio.wav?rlkey=ol4a05nn3t4wymg1oqowp8oed&st=373m61t9&dl=0
+  მტრების დასაბნევად, პირველ რიგში, საკუთარი თავი უნდა დააბნიო.`)
+})
+
 app.get("/christopherjudge", (req, res) => {
   return res.redirect("https://drive.google.com/file/d/11uOwTe5aWbyEuRj5eu_YbmrkMh4QFeTn/view?usp=sharing")
 })
