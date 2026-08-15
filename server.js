@@ -15,6 +15,7 @@ const express = require("express"),
   adminRouter = require("./routers/adminRouter"),
   checkRouter = require("./routers/checkRouter"),
   { checkCmd } = require("./utils/bash"),
+  { computePoints } = require("./utils/scoring"),
   {
     ensureAuthenticated,
     forwardAuthenticated,
@@ -63,6 +64,16 @@ app.get("/", async (req, res) => {
       lastAnswered: "asc",
     });
     const foundChallenges = await Challenge.find().sort({ challengeId: 1 });
+    const challengeMap = new Map(
+      foundChallenges.flatMap((challenge) => [
+        [challenge.challengeId, challenge],
+        [challenge.title, challenge],
+      ])
+    );
+    myUser.points = computePoints(myUser, challengeMap);
+    for (const user of allUsers) {
+      user.points = computePoints(user, challengeMap);
+    }
     const cryptChallenges = await Challenge.find({ type: "cryptic" }).sort({
       title: 1,
     });
@@ -81,6 +92,16 @@ app.get("/leaderboard", async (req, res) => {
     points: "desc",
     lastAnswered: "asc",
   });
+  const foundChallenges = await Challenge.find();
+  const challengeMap = new Map(
+    foundChallenges.flatMap((challenge) => [
+      [challenge.challengeId, challenge],
+      [challenge.title, challenge],
+    ])
+  );
+  for (const user of allUsers) {
+    user.points = computePoints(user, challengeMap);
+  }
   res.render("leaderboard", { allUsers: allUsers });
 });
 app.get("/countdown", ensureAuthenticated, (req, res) => {

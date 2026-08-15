@@ -35,7 +35,7 @@ router.post("/:id", async (req, res) => {
       });
       return res.json({ success: false, message: "Wrong answer!" });
     } else {
-      const points = user.points + foundChallenge.points;
+      const challSolves = foundChallenge.solves + 1;
       const solves = user.solves;
       var lockedLevels = user.unlockedLevels;
       const crypticSolves = [];
@@ -101,9 +101,7 @@ router.post("/:id", async (req, res) => {
       if (user.lockedLevels.includes(foundChallenge.challengeId)) {
         return res.json({ success: false, message: "This level is locked!" });
       }
-      var challSolves = foundChallenge.solves,
-        challSolvers = foundChallenge.solvers;
-      challSolves += 1;
+      var challSolvers = foundChallenge.solvers;
       challSolvers.push(user.name);
       solves.push(foundChallenge.title);
       userLogs.push({
@@ -121,7 +119,6 @@ router.post("/:id", async (req, res) => {
         $set: {
           logs: userLogs,
           lastAnswered: Number(newDate),
-          points: points,
           solves: solves,
           lockedLevels: lockedLevels,
         },
