@@ -51,6 +51,7 @@ app.use(passport.session());
 
 app.get("/", async (req, res) => {
   try {
+    return res.redirect("/leaderboard");
     const myUser = req.user;
     if (!myUser) return res.redirect("/login");
     if (myUser.banned) return res.redirect("/banned");
@@ -77,7 +78,7 @@ app.get("/", async (req, res) => {
   }
 });
 app.get("/leaderboard", async (req, res) => {
-  const allUsers = await User.find().sort({
+  const allUsers = await User.find().select("-logs").sort({
     points: "desc",
     lastAnswered: "asc",
   });
