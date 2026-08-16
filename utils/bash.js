@@ -15,7 +15,7 @@ const checkCmd = async (cmd, req) => {
     } else if (command[0] == 'duck') {
         return "https://encryptid-level0.onrender.com"
     } else if (command[0] == "bradpitt") {
-        return "https://pastebin.com/v8USGE5z";
+        return "https://pastebin.com/dwZy8G4e";
     }
     else {
         return `Bash: command "${command[0]}" not found.`
