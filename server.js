@@ -192,6 +192,10 @@ app.get("/michaeladamthwaite", (req, res) => {
   res.render("michaeladamthwaite");
 });
 
+app.get("/charliekirk", (req, res) => {
+  return res.redirect("https://drive.google.com/file/d/1lGzYFbPhyOHDb67U04Da_6CsXNwYUoU3/view?usp=sharing");
+})
+
 app.listen(PORT, console.log(`RoboVM listening on port ${PORT}`));
 
 // const User = require('./schemas/userSchema')

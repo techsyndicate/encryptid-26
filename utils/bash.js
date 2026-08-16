@@ -16,6 +16,8 @@ const checkCmd = async (cmd, req) => {
         return "https://encryptid-level0.onrender.com"
     } else if (command[0] == "bradpitt") {
         return "https://pastebin.com/dwZy8G4e";
+    } else if (command[0] == "halo") {
+        return "Ever since matz99x got banned entity 40 ki to networking mei back laggyi he got backloggd";
     }
     else {
         return `Bash: command "${command[0]}" not found.`
